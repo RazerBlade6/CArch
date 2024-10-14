@@ -1,0 +1,34 @@
+1.  Variables are declared in the data segment, code in the code segment
+2.  If you want to load a variable into a register, your instruction should be one of these:
+    i.   li (if loading an immediate, i.e. Just a value (0, 5, 12, etc.))
+    ii.  lw (if loading a word from memory (word = 16 bits/2 bytes))
+    iii. la (if loading something longer than 2 bytes (array, string, etc.))
+    iv.  move (if loading from a register to another register)
+
+3. Most instructions that do any operation have 3 parameters:
+    i.  The first parameter is the destination (i.e. where your result should be stored)
+    ii. The next two are the thing which the instruction will be applied to.
+    Eg. sub $t0, $t1, $t2 <=====> $t0 = $t1 - $t2
+
+4. If your instruction deals with immediates, append 'i' to the instruction
+    Eg. add $s0, $s1, $s2 <=====> $s0 = $s1 + $s2
+                        vs
+        addi $s0, $t0, 4  <=====> $s0 = $t0 + 4
+
+5. Use branches to control the flow of your code:
+    j =>    jump (unconditionally)
+    be =>   branch if Equal
+    bne =>  branch if not Equal
+    bez =>  branch if Equal to Zero
+    bnez => brancg if Not Equal to Zero
+    bgt =>  branch if Greater Than
+    bge =>  branch if Greater than or Equal
+    blt =>  branch if Less Than
+    ble =>  branch if Less than or Equal
+
+6. Use Syscalls for functions. All syscalls take $v0 as their call id, and if they return
+    a value will store it in $a0
+
+    1: print int
+    4: print string
+    10: exit
